@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gowtham Raj T</title>
+    <style>
+        /* Body styles */
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            color: #ffffff;
+            background-image: url('bg img.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Adjusted hamburger button background to the right */
+        .menu-btn-background {
+            position: absolute;
+            top: 20px;
+            right: 1px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .menu-btn {
+            cursor: pointer;
+            transition: transform 0.9s ease;
+        }
+
+        .menu-btn div {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 4px 0;
+            border-radius: 5px;
+        }
+
+        /* Sliding screen */
+        .menu-content {
+            position: fixed;
+            top: 5%;
+            bottom: 10%;
+            left: -25%;
+            height: 80%;
+            width: 25%;
+            background-image: url('slidescreen img.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            transition: left 1.5s ease;
+            border-radius: 20px;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* New wrapper for content */
+        .content-wrapper {
+            overflow: hidden;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        .profile-img img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            background-color: #ffffff;
+            margin: 0 auto 10px auto;
+        }
+
+        .profile-info {
+            display: table;
+            margin: 0 auto;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        .profile-info p {
+            display: table-row;
+        }
+
+        .profile-info p span {
+            display: table-cell;
+            padding: 5px 10px;
+        }
+
+        .social-links {
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-links a:hover {
+            color: #0000ff;
+        }
+
+        .menu-active .menu-content {
+            left: 0;
+        }
+
+        .menu-active .menu-btn-background {
+            right: 10px;
+        }
+
+        /* Carousel styles */
+        .carousel-container {
+            width: 300px;
+            height: 200px;
+            margin: 50px auto;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .carousel div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1.5s, transform 1.5s; /* Ensure smooth transitions */
+}
+
+
+        .carousel div:nth-child(1) {
+            background-image: url('Coursera- AI for Everyone.jpg');
+            transform: rotateY(0deg) translateZ(150px);
+            opacity: 1;
+        }
+
+        .carousel div:nth-child(2) {
+            background-image: url('Coursera- Introduction to Front-End Development.jpg');
+            transform: rotateY(120deg) translateZ(150px);
+            opacity: 0.5;
+        }
+
+        .carousel div:nth-child(3) {
+            background-image: url('Infosys- Basics of Python.jpg');
+            transform: rotateY(240deg) translateZ(150px);
+            opacity: 0.5;
+        }
+
+        .carousel-container {
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            perspective: 1000px;
+            z-index: 10;
+        }
+
+        /* Button styles */
+        .carousel-button {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-80%) translateZ(20px); /* Add a 3D translation */
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    transform-style: preserve-3d; /* Add this to enable 3D transformations */
+    backface-visibility: hidden; /* Add this to prevent flickering */
+    background: none; /* Remove the background color */
+}
+
+        .carousel-button.left {
+            left: -200px;
+        }
+
+        .carousel-button.right {
+            right: -200px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="menu-content">
+        <div class="menu-btn-background">
+            <div class="menu-btn" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <center>
+            <div class="profile-img">
+                <img src="passport.jpg" alt="Passport Image">
+            </div>
+            <h3>PROFILE</h3>
+            <div class="content-wrapper">
+                <div class="profile-info">
+                    <p><span>Name:</span><span>Gowtham Raj T</span></p>
+                    <p><span>D.O.B:</span><span>21 November 2005</span></p>
+                    <p><span>Email:</span><span>gowthamraj211105@gmail.com</span></p>
+                </div>
+            </div>
+        </center>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/gowtham-raj-t-354a4328b/" target="_blank">LinkedIn</a> |
+            <a href="https://wa.me/9543847774" target="_blank">WhatsApp</a> |
+            <a href="https://www.instagram.com/gow_tham_raj21/" target="_blank">Instagram</a> |
+            <a href="mailto:gowthamraj211105@gmail.com">Email</a>
+        </div>
+    </div>
+
+    <!-- Carousel for Certificates -->
+<div class="carousel-container">
+    <button class="carousel-button left" onclick="rotateCarousel('left')"><</button>
+    <div class="carousel">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <button class="carousel-button right" onclick="rotateCarousel('right')">></button>
+</div>
+
+<script>
+    let angle = 0;
+    let currentIndex = 0;
+    let i=0;
+
+    function rotateCarousel(direction) {
+    const items = document.querySelectorAll('.carousel div');
+    const totalItems = items.length;
+    const angleStep = 360 / totalItems;
+
+    // Update currentIndex based on direction with looping
+    if (direction === 'right') {
+        currentIndex = (currentIndex + 1) % totalItems; // Loop around right
+    } else if (direction === 'left') {
+        currentIndex = (currentIndex - 1) % totalItems; // Loop around left
+    }
+
+    // Rotate the carousel based on the new currentIndex
+    items.forEach((item, index) => {
+        item.style.transform = `rotateY(${(index - currentIndex) * angleStep}deg) translateZ(150px)`;
+        // Adjust opacity
+        item.style.opacity = index === currentIndex ? '1' : '0.5';
+    });
+}
+
+    // Swipe detection (touch and mouse)
+    let startX;
+    const carouselContainer = document.querySelector('.carousel-container');
+
+    carouselContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    carouselContainer.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        if (startX > endX + 50) {
+            rotateCarousel('right');
+        } else if (startX < endX - 50) {
+            rotateCarousel('left');
+        }
+    });
+
+    // Mouse drag detection
+    carouselContainer.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+    });
+
+    carouselContainer.addEventListener('mouseup', (e) => {
+        const endX = e.clientX;
+        if (startX > endX + 50) {
+            rotateCarousel('right');
+        } else if (startX < endX - 50) {
+            rotateCarousel('left');
+        }
+    });
+
+    // Arrow key detection
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            rotateCarousel('right');
+        } else if (e.key === 'ArrowLeft') {
+            rotateCarousel('left');
+        }
+    });
+
+    // Menu toggle
+    function toggleMenu() {
+        document.body.classList.toggle('menu-active');
+    }
+</script>
+</body>
+</html>
