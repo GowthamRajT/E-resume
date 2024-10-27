@@ -20,7 +20,7 @@
         .menu-btn-background {
             position: absolute;
             top: 20px;
-            right: 1px;
+            right: 15px;
             width: 50px;
             height: 50px;
             display: flex;
@@ -121,8 +121,9 @@
 
         /* Carousel styles */
         .carousel-container {
-            width: 300px;
-            height: 200px;
+            width: 80%; /* Adjusted for responsiveness */
+            max-width: 600px; /* Max width for larger screens */
+            height: 350px; /* Height of the carousel */
             margin: 50px auto;
             perspective: 1000px;
             position: relative;
@@ -144,6 +145,16 @@
             background-position: center;
             transition: opacity 0.5s, transform 0.5s;
             opacity: 0.2; /* Set default opacity for all certificates */
+            overflow: hidden; /* Prevent overflow from images */
+        }
+
+        .carousel div img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill; /* Maintain aspect ratio */
+            position: absolute; /* Fill the entire area */
+            top: 0;
+            left: 0;
         }
 
         /* Positioning each certificate */
@@ -195,13 +206,14 @@
             text-align: center;
             font-size: 16px;
             color: #ffffff; /* Change color as necessary */
+            z-index: 1; /* Ensure title is above the image */
         }
 
         /* Button styles */
         .carousel-button {
-            position: fixed;
+            position: absolute;
             top: 50%;
-            transform: translateY(-80%) translateZ(20px); /* Add a 3D translation */
+            transform: translateY(-50%) translateZ(20px); /* Add a 3D translation */
             padding: 10px 20px;
             font-size: 18px;
             color: #ffffff;
@@ -214,13 +226,34 @@
         }
 
         .carousel-button.left {
-            left: -200px;
+            left: -50px; /* Adjust spacing */
         }
 
         .carousel-button.right {
-            right: -200px;
+            right: -50px; /* Adjust spacing */
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .carousel-container {
+                width: 90%; /* More width on smaller screens */
+                height: 200px; /* Adjust height for smaller screens */
+            }
+            .carousel-title {
+                font-size: 14px; /* Smaller font size */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-info {
+                font-size: 14px; /* Smaller font size for profile info */
+            }
+
+            .social-links a {
+                font-size: 12px; /* Smaller font size for links */
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -259,27 +292,35 @@
         <div class="carousel">
             <div>
                 <div class="carousel-title">Coursera- AI for Everyone</div> <!-- Title for 1st image -->
+                <img src="Coursera- AI for Everyone.jpg" alt="Coursera- AI for Everyone">
             </div>
             <div>
                 <div class="carousel-title">Coursera- Introduction to Front-End Development</div> <!-- Title for 2nd image -->
+                <img src="Coursera- Introduction to Front-End Development.jpg" alt="Coursera- Introduction to Front-End Development">
             </div>
             <div>
                 <div class="carousel-title">Infosys- Basics of Python</div> <!-- Title for 3rd image -->
+                <img src="Infosys- Basics of Python.jpg" alt="Infosys- Basics of Python">
             </div>
             <div>
                 <div class="carousel-title">Coursera- Version Control</div> <!-- Title for 4th image -->
+                <img src="Coursera- Version Control.jpg" alt="Coursera- Version Control">
             </div>
             <div>
                 <div class="carousel-title">Design Thinking - A Primer</div> <!-- Title for 5th image -->
+                <img src="Design Thinking - A Primer.jpg" alt="Design Thinking - A Primer">
             </div>
             <div>
                 <div class="carousel-title">Sensathon Certificate 2024</div> <!-- Title for 6th image -->
+                <img src="Sensathon Certificate 2024.jpg" alt="Sensathon Certificate 2024">
             </div>
             <div>
                 <div class="carousel-title">National Level Srinivasa Ramanujam Mathematical competitions 2024</div> <!-- Title for 7th image -->
+                <img src="National Level Srinivasa Ramanujam Mathematical competitions 2024.jpg" alt="National Level Srinivasa Ramanujam Mathematical competitions 2024">
             </div>
             <div>
                 <div class="carousel-title">INTEL ONEAPI Machine Learning Workshop</div> <!-- Title for 8th image -->
+                <img src="INTEL ONEAPI Machine Learning Workshop.jpg" alt="INTEL ONEAPI Machine Learning Workshop">
             </div>
         </div>
         <button class="carousel-button right" onclick="rotateCarousel('right')">></button>
