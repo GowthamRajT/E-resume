@@ -13,6 +13,7 @@
             background-image: url('bg img.jpg');
             background-size: cover;
             background-position: center;
+            scroll-behavior: smooth; /* Add smooth scrolling */
         }
 
         /* Adjusted hamburger button background to the right */
@@ -135,31 +136,62 @@
         }
 
         .carousel div {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: opacity 1.5s, transform 1.5s; /* Ensure smooth transitions */
-}
-
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1.5s, transform 1.5s; /* Ensure smooth transitions */
+        }
 
         .carousel div:nth-child(1) {
             background-image: url('Coursera- AI for Everyone.jpg');
             transform: rotateY(0deg) translateZ(150px);
             opacity: 1;
         }
-
         .carousel div:nth-child(2) {
             background-image: url('Coursera- Introduction to Front-End Development.jpg');
-            transform: rotateY(120deg) translateZ(150px);
+            transform: rotateY(45deg) translateZ(150px);
+            opacity: 0.5;
+        }
+        .carousel div:nth-child(3) {
+            background-image: url('Infosys- Basics of Python.jpg');
+            transform: rotateY(90deg) translateZ(150px);
+            opacity: 0.5;
+        }
+        .carousel div:nth-child(4) {
+            background-image: url('Coursera- Version Control.jpg'); /* Add the proper image URL */
+            transform: rotateY(135deg) translateZ(150px);
+            opacity: 0.5;
+        }
+        .carousel div:nth-child(5) {
+            background-image: url('Design Thinking - A Primer.jpg'); /* Add the proper image URL */
+            transform: rotateY(180deg) translateZ(150px);
+            opacity: 0.5;
+        }
+        .carousel div:nth-child(6) {
+            background-image: url('Sensathon Certificate 2024.jpg'); /* Add the proper image URL */
+            transform: rotateY(225deg) translateZ(150px);
+            opacity: 0.5;
+        }
+        .carousel div:nth-child(7) {
+            background-image: url('National Level Srinivasa Ramanujam Mathematical competitions 2024.jpg'); /* Add the proper image URL */
+            transform: rotateY(270deg) translateZ(150px);
+            opacity: 0.5;
+        }
+        .carousel div:nth-child(8) {
+            background-image: url('INTEL ONEAPI Machine Learning Workshop.jpg'); /* Add the proper image URL */
+            transform: rotateY(315deg) translateZ(150px);
             opacity: 0.5;
         }
 
-        .carousel div:nth-child(3) {
-            background-image: url('Infosys- Basics of Python.jpg');
-            transform: rotateY(240deg) translateZ(150px);
-            opacity: 0.5;
+        .carousel-title {
+            position: absolute;
+            width: 100%;
+            bottom: 10px;
+            text-align: center;
+            font-size: 16px;
+            color: #ffffff; /* Change color as necessary */
         }
 
         .carousel-container {
@@ -175,19 +207,19 @@
 
         /* Button styles */
         .carousel-button {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-80%) translateZ(20px); /* Add a 3D translation */
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    z-index: 10;
-    transform-style: preserve-3d; /* Add this to enable 3D transformations */
-    backface-visibility: hidden; /* Add this to prevent flickering */
-    background: none; /* Remove the background color */
-}
+            position: fixed;
+            top: 50%;
+            transform: translateY(-80%) translateZ(20px); /* Add a 3D translation */
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            transform-style: preserve-3d; /* Add this to enable 3D transformations */
+            backface-visibility: hidden; /* Add this to prevent flickering */
+            background: none; /* Remove the background color */
+        }
 
         .carousel-button.left {
             left: -200px;
@@ -196,7 +228,7 @@
         .carousel-button.right {
             right: -200px;
         }
-        
+
     </style>
 </head>
 <body>
@@ -230,85 +262,106 @@
     </div>
 
     <!-- Carousel for Certificates -->
-<div class="carousel-container">
-    <button class="carousel-button left" onclick="rotateCarousel('left')"><</button>
-    <div class="carousel">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="carousel-container">
+        <button class="carousel-button left" onclick="rotateCarousel('left')"><</button>
+        <div class="carousel">
+            <div>
+                <div class="carousel-title">Coursera- AI for Everyone</div> <!-- Title for 1st image -->
+            </div>
+            <div>
+                <div class="carousel-title">Coursera- Introduction to Front-End Development</div> <!-- Title for 2nd image -->
+            </div>
+            <div>
+                <div class="carousel-title">Infosys- Basics of Python</div> <!-- Title for 3rd image -->
+            </div>
+            <div>
+                <div class="carousel-title">Coursera- Version Control</div> <!-- Title for 4th image -->
+            </div>
+            <div>
+                <div class="carousel-title">Design Thinking - A Primer</div> <!-- Title for 5th image -->
+            </div>
+            <div>
+                <div class="carousel-title">Sensathon Certificate 2024</div> <!-- Title for 6th image -->
+            </div>
+            <div>
+                <div class="carousel-title">National Level Srinivasa Ramanujam Mathematical competitions 2024</div> <!-- Title for 7th image -->
+            </div>
+            <div>
+                <div class="carousel-title">INTEL ONEAPI Machine Learning Workshop</div> <!-- Title for 8th image -->
+            </div>
+        </div>
+        <button class="carousel-button right" onclick="rotateCarousel('right')">></button>
     </div>
-    <button class="carousel-button right" onclick="rotateCarousel('right')">></button>
-</div>
 
-<script>
-    let angle = 0;
-    let currentIndex = 0;
-    let i=0;
+    <script>
+        let angle = 0;
+        let currentIndex = 0;
+        let i=0;
 
-    function rotateCarousel(direction) {
-    const items = document.querySelectorAll('.carousel div');
-    const totalItems = items.length;
-    const angleStep = 360 / totalItems;
+        function rotateCarousel(direction) {
+            const items = document.querySelectorAll('.carousel div');
+            const totalItems = items.length;
+            const angleStep = 360 / totalItems;
 
-    // Update currentIndex based on direction with looping
-    if (direction === 'right') {
-        currentIndex = (currentIndex + 1) % totalItems; // Loop around right
-    } else if (direction === 'left') {
-        currentIndex = (currentIndex - 1) % totalItems; // Loop around left
-    }
+            // Update currentIndex based on direction with looping
+            if (direction === 'right') {
+                currentIndex = (currentIndex + 1) % totalItems; // Loop around right
+            } else if (direction === 'left') {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems; // Loop around left
+            }
 
-    // Rotate the carousel based on the new currentIndex
-    items.forEach((item, index) => {
-        item.style.transform = `rotateY(${(index - currentIndex) * angleStep}deg) translateZ(150px)`;
-        // Adjust opacity
-        item.style.opacity = index === currentIndex ? '1' : '0.5';
-    });
-}
-
-    // Swipe detection (touch and mouse)
-    let startX;
-    const carouselContainer = document.querySelector('.carousel-container');
-
-    carouselContainer.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-    });
-
-    carouselContainer.addEventListener('touchend', (e) => {
-        const endX = e.changedTouches[0].clientX;
-        if (startX > endX + 50) {
-            rotateCarousel('right');
-        } else if (startX < endX - 50) {
-            rotateCarousel('left');
+            // Rotate the carousel based on the new currentIndex
+            items.forEach((item, index) => {
+                item.style.transform = `rotateY(${(index - currentIndex) * angleStep}deg) translateZ(150px)`;
+                // Adjust opacity
+                item.style.opacity = index === currentIndex ? '1' : '0.5';
+            });
         }
-    });
 
-    // Mouse drag detection
-    carouselContainer.addEventListener('mousedown', (e) => {
-        startX = e.clientX;
-    });
+        // Swipe detection (touch and mouse)
+        let startX;
+        const carouselContainer = document.querySelector('.carousel-container');
 
-    carouselContainer.addEventListener('mouseup', (e) => {
-        const endX = e.clientX;
-        if (startX > endX + 50) {
-            rotateCarousel('right');
-        } else if (startX < endX - 50) {
-            rotateCarousel('left');
+        carouselContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        carouselContainer.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                rotateCarousel('right');
+            } else if (startX < endX - 50) {
+                rotateCarousel('left');
+            }
+        });
+
+        // Mouse drag detection
+        carouselContainer.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+        });
+
+        carouselContainer.addEventListener('mouseup', (e) => {
+            const endX = e.clientX;
+            if (startX > endX + 50) {
+                rotateCarousel('right');
+            } else if (startX < endX - 50) {
+                rotateCarousel('left');
+            }
+        });
+
+        // Arrow key detection
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                rotateCarousel('right');
+            } else if (e.key === 'ArrowLeft') {
+                rotateCarousel('left');
+            }
+        });
+
+        // Menu toggle
+        function toggleMenu() {
+            document.body.classList.toggle('menu-active');
         }
-    });
-
-    // Arrow key detection
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') {
-            rotateCarousel('right');
-        } else if (e.key === 'ArrowLeft') {
-            rotateCarousel('left');
-        }
-    });
-
-    // Menu toggle
-    function toggleMenu() {
-        document.body.classList.toggle('menu-active');
-    }
-</script>
+    </script>
 </body>
 </html>
