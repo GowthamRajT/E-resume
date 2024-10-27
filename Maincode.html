@@ -133,6 +133,7 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
+            transition: transform 0.5s ease-in-out;
         }
 
         .carousel div {
@@ -141,48 +142,50 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            transition: opacity 1.5s, transform 1.5s; /* Ensure smooth transitions */
+            transition: opacity 0.5s, transform 0.5s;
+            opacity: 0.2; /* Set default opacity for all certificates */
         }
 
+        /* Positioning each certificate */
         .carousel div:nth-child(1) {
             background-image: url('Coursera- AI for Everyone.jpg');
-            transform: rotateY(0deg) translateZ(150px);
-            opacity: 1;
+            transform: rotateY(0deg) translateZ(150px); /* Center */
+            opacity: 1; /* Only visible one */
         }
+        
         .carousel div:nth-child(2) {
             background-image: url('Coursera- Introduction to Front-End Development.jpg');
-            transform: rotateY(45deg) translateZ(150px);
-            opacity: 0.5;
+            transform: rotateY(45deg) translateZ(140px); /* Adjust according to perspective */
         }
+        
         .carousel div:nth-child(3) {
             background-image: url('Infosys- Basics of Python.jpg');
-            transform: rotateY(90deg) translateZ(150px);
-            opacity: 0.5;
+            transform: rotateY(90deg) translateZ(140px);
         }
+        
         .carousel div:nth-child(4) {
-            background-image: url('Coursera- Version Control.jpg'); /* Add the proper image URL */
-            transform: rotateY(135deg) translateZ(150px);
-            opacity: 0.5;
+            background-image: url('Coursera- Version Control.jpg');
+            transform: rotateY(135deg) translateZ(140px);
         }
+
         .carousel div:nth-child(5) {
-            background-image: url('Design Thinking - A Primer.jpg'); /* Add the proper image URL */
-            transform: rotateY(180deg) translateZ(150px);
-            opacity: 0.5;
+            background-image: url('Design Thinking - A Primer.jpg');
+            transform: rotateY(180deg) translateZ(140px);
         }
+        
         .carousel div:nth-child(6) {
-            background-image: url('Sensathon Certificate 2024.jpg'); /* Add the proper image URL */
-            transform: rotateY(225deg) translateZ(150px);
-            opacity: 0.5;
+            background-image: url('Sensathon Certificate 2024.jpg');
+            transform: rotateY(225deg) translateZ(140px);
         }
+        
         .carousel div:nth-child(7) {
-            background-image: url('National Level Srinivasa Ramanujam Mathematical competitions 2024.jpg'); /* Add the proper image URL */
-            transform: rotateY(270deg) translateZ(150px);
-            opacity: 0.5;
+            background-image: url('National Level Srinivasa Ramanujam Mathematical competitions 2024.jpg');
+            transform: rotateY(270deg) translateZ(140px);
         }
+        
         .carousel div:nth-child(8) {
-            background-image: url('INTEL ONEAPI Machine Learning Workshop.jpg'); /* Add the proper image URL */
-            transform: rotateY(315deg) translateZ(150px);
-            opacity: 0.5;
+            background-image: url('INTEL ONEAPI Machine Learning Workshop.jpg');
+            transform: rotateY(315deg) translateZ(140px);
         }
 
         .carousel-title {
@@ -192,17 +195,6 @@
             text-align: center;
             font-size: 16px;
             color: #ffffff; /* Change color as necessary */
-        }
-
-        .carousel-container {
-            width: 300px;
-            height: 200px;
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            perspective: 1000px;
-            z-index: 10;
         }
 
         /* Button styles */
@@ -294,9 +286,7 @@
     </div>
 
     <script>
-        let angle = 0;
         let currentIndex = 0;
-        let i=0;
 
         function rotateCarousel(direction) {
             const items = document.querySelectorAll('.carousel div');
@@ -314,7 +304,7 @@
             items.forEach((item, index) => {
                 item.style.transform = `rotateY(${(index - currentIndex) * angleStep}deg) translateZ(150px)`;
                 // Adjust opacity
-                item.style.opacity = index === currentIndex ? '1' : '0.5';
+                item.style.opacity = index === currentIndex ? '1' : '0.2'; // Only the current item should be fully visible
             });
         }
 
