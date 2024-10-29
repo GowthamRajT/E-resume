@@ -119,95 +119,87 @@
             right: 10px;
         }
 
-        /* Carousel styles */
-        .carousel-container {
-            width: 80%; /* Adjusted for responsiveness */
-            max-width: 600px; /* Max width for larger screens */
-            height: 350px; /* Height of the carousel */
-            margin: 50px auto;
-            perspective: 1000px;
-            position: relative;
-        }
 
-        .carousel {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease-in-out;
-        }
+    /* Carousel styles */
+   /* Carousel styles */
+   .carousel-container {
+        width: 80%; /* Adjusted for responsiveness */
+        max-width: 350px; /* Max width for larger screens */
+        height: 250px; /* Height of the carousel */
+        margin: 50px auto;
+        perspective: 1000px;
+        position: relative;
+    }
+    .carousel {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease-in-out;
+    }
+    .carousel div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: opacity 0.5s, transform 0.5s;
+        opacity: 0.0; /* Set default opacity for all certificates */
+        overflow: hidden; /* Prevent overflow from images */
+        display: flex; /* Add flex display for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+    .carousel div img {
+        width: auto; /* Maintain aspect ratio */
+        height: 100%; /* Fill the height of the carousel */
+        max-width: 100%; /* Prevent overflow */
+        object-fit: contain; /* Ensure the image is contained within */
+        object-position: center; /* Center the image */
+        position: relative; /* Remove absolute positioning */
+        border-radius: 10px;
+    }
 
-        .carousel div {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: opacity 0.5s, transform 0.5s;
-            opacity: 0.2; /* Set default opacity for all certificates */
-            overflow: hidden; /* Prevent overflow from images */
-        }
+    
+    /* Carousel item transforms */
+    .carousel div:nth-child(1) {
+        transform: rotateY(0deg) translateZ(150px); /* Center */
+        opacity: 1; /* Only the first item is fully visible initially */
+    }
+    .carousel div:nth-child(2) {
+        transform: rotateY(45deg) translateZ(140px); /* Adjust according to perspective */
+    }
+    .carousel div:nth-child(3) {
+        transform: rotateY(90deg) translateZ(140px);
+    }
+    .carousel div:nth-child(4) {
+        transform: rotateY(135deg) translateZ(140px);
+    }
+    .carousel div:nth-child(5) {
+        transform: rotateY(180deg) translateZ(140px);
+    }
+    .carousel div:nth-child(6) {
+        transform: rotateY(225deg) translateZ(140px);
+    }
+    .carousel div:nth-child(7) {
+        transform: rotateY(270deg) translateZ(140px);
+    }
+    .carousel div:nth-child(8) {
+        transform: rotateY(315deg) translateZ(140px);
+    }
 
-        .carousel div img {
-            width: 100%;
-            height: 100%;
-            object-fit: fill; /* Maintain aspect ratio */
-            position: absolute; /* Fill the entire area */
-            top: 0;
-            left: 0;
-        }
+    .carousel-image {
+    position: relative;
+    z-index: 2; /* Ensure the image is above the title */
+    }
 
-        /* Positioning each certificate */
-        .carousel div:nth-child(1) {
-            background-image: url('Coursera- AI for Everyone.jpg');
-            transform: rotateY(0deg) translateZ(150px); /* Center */
-            opacity: 1; /* Only visible one */
-        }
-        
-        .carousel div:nth-child(2) {
-            background-image: url('Coursera- Introduction to Front-End Development.jpg');
-            transform: rotateY(45deg) translateZ(140px); /* Adjust according to perspective */
-        }
-        
-        .carousel div:nth-child(3) {
-            background-image: url('Infosys- Basics of Python.jpg');
-            transform: rotateY(90deg) translateZ(140px);
-        }
-        
-        .carousel div:nth-child(4) {
-            background-image: url('Coursera- Version Control.jpg');
-            transform: rotateY(135deg) translateZ(140px);
-        }
-
-        .carousel div:nth-child(5) {
-            background-image: url('Design Thinking - A Primer.jpg');
-            transform: rotateY(180deg) translateZ(140px);
-        }
-        
-        .carousel div:nth-child(6) {
-            background-image: url('Sensathon Certificate 2024.jpg');
-            transform: rotateY(225deg) translateZ(140px);
-        }
-        
-        .carousel div:nth-child(7) {
-            background-image: url('National Level Srinivasa Ramanujam Mathematical competitions 2024.jpg');
-            transform: rotateY(270deg) translateZ(140px);
-        }
-        
-        .carousel div:nth-child(8) {
-            background-image: url('INTEL ONEAPI Machine Learning Workshop.jpg');
-            transform: rotateY(315deg) translateZ(140px);
-        }
-
-        .carousel-title {
-            position: absolute;
-            width: 100%;
-            bottom: 10px;
-            text-align: center;
-            font-size: 16px;
-            color: #ffffff; /* Change color as necessary */
-            z-index: 1; /* Ensure title is above the image */
-        }
+    .carousel-title {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #ffffff;
+    z-index: 1; /* Title stays below the image */
+}
 
         /* Button styles */
         .carousel-button {
@@ -345,7 +337,7 @@
             items.forEach((item, index) => {
                 item.style.transform = `rotateY(${(index - currentIndex) * angleStep}deg) translateZ(150px)`;
                 // Adjust opacity
-                item.style.opacity = index === currentIndex ? '1' : '0.2'; // Only the current item should be fully visible
+                item.style.opacity = index === currentIndex ? '1' : '0.0'; // Only the current item should be fully visible
             });
         }
 
